@@ -1,0 +1,8 @@
+*{
+    border-radius: 5px;
+    border: 1px solid blue
+}
+header{
+  background:pink;
+  width: 100vw;
+}

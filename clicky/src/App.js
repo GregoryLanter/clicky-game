@@ -1,26 +1,60 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import Header from "./components/Header";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import './App.css';
+import FriendCard from "./components/FriendCard";
+import Wrapper from "./components/Wrapper";
+import krustyPals from "./krustyPals.json"
+
+class App extends Component {
+  state = {
+    response: "Click an image below to begin!",
+    score: 0,
+    topScore: 0,
+    image: "",
+    krustyPals: krustyPals,
+    clicked: "Not Clicked",
+    trackTop: false
+  };
+  
+  
+
+  setScore = (clicked) => {
+    if (krustyPals[clicked].clicked === "clicked"){
+      this.setState({response: "Sorry No, Gave Over!"})
+    }else{
+      krustyPals[clicked].clicked = "clicked"
+      console.log(krustyPals);
+      this.setState({score: this.state.score + 1});
+      this.setState({clicked: "clicked"})
+      if(this.state.score === this.state.topScore){
+        alert("I got here");
+        this.setState({trackTop: true});
+      }
+      this.setState({response: "CORRECT!!! Keep guessing"})  
+      if(this.state.trackTop) {
+        alert("I got here too");
+        this.setState({trackTop: this.state.score});
+      }
+    }
+
+  } 
+
+  render() {
+    return (      
+      <Wrapper>
+        <Header response={this.state.response} score={this.state.score} topScore={this.state.topScore} />
+        {this.state.krustyPals.map(pal => (
+          <FriendCard 
+            setScoreCallBack = {this.setScore}  
+            image = {pal.image}
+            clicked = {this.state.clicked}
+            id = {pal.id}
+          />
+        ))}
+      </Wrapper>
+    );
+  }
 }
 
 export default App;
