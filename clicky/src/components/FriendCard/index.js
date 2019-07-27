@@ -3,9 +3,9 @@ import "./style.css";
 
 
 class FriendCard extends React.Component {
-  state = {
+/*  state = {
     clicked: "Not Clicked"
-  };
+  };*/
 
   handleScore = () => {
     //this.setState({id: 1});
