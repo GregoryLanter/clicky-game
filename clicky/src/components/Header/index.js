@@ -5,10 +5,10 @@ import "./style.css";
 
 function Header(props) {
   return (
-    <header>
-      <p>Clicky Game</p>
-      <p>{props.response}</p>
-      <p>Score: {props.score} | Top Score {props.topScore}</p>   
+    <header className="navbar">
+      <h1>Clicky Game</h1>
+      <h1>{props.response}</h1>
+      <h1>Score: {props.score} | Top Score {props.topScore}</h1>   
     </header>
 
   );
