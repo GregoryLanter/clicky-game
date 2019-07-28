@@ -20,33 +20,18 @@ class App extends Component {
       play: "Playing"
       }
   }
-  
-  // state = {
-  //   response: "Click an image below to begin!",
-  //   score: 0,
-  //   topScore: 0,
-  //   image: "",
-  //   krustyPals: krustyPals,
-  //   trackTop: false,
-  //   play: "Playing"
-  // };
 
     resetBuilder(){
-      this.setState(this.initialState)
+      let tempTopScore = this.state.topScore;
+      this.setState(this.initialState);
+      this.setState({topScore: tempTopScore});
     }
 
 
   setScore = (clicked) => {
 
     if (this.state.play !== "Playing") {
-      //reset
-      // this.setState({ score: 0 });
-      alert("resetting"); 
-      // for (let i = 0; i < krustyPals.length; i++) {
-      //   krustyPals[i].clicked = "Not CLicked";
-      // }
-      // this.setState({ play: "Playing" });
-      this.resetBuilder();
+      this.resetBuilder();      
     }
 
     if (krustyPals[clicked - 1].clicked === "clicked") {
