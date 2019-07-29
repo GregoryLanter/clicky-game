@@ -1,7 +1,7 @@
 # clicky-game
 react game
 
-#Technology
+# Technology
 react.js
 
 We have 3 components Header, Friend Card and wrapper. Header display the name of game. Wrapper is used to output 
@@ -15,9 +15,11 @@ number that is not in the used array. If we get to 12 for our random number we r
 our of bounds for our array. Then we add it to the diplay array in state. When a program is clicked we update the clicked 
 array in state based on the id when use that later to tell if a card has been clicked twice.
 
-##In Krusty's Guess Who you can click a new image each turn when you click an image for the second time you are out.
+## Game Play
+In Krusty's Guess Who you can click a new image each turn when you click an image for the second time you are out.
 Click all 12 images with a double click and you Win!
 
-##The hard part of this program was working with state properly and learning the nuances of setting state. I would 
+## Notes
+The hard part of this program was working with state properly and learning the nuances of setting state. I would 
 like to restart the game on the first click after you lose, but I am happy to get it to reset on the first click 
 after a loss and then start again after the second click.
