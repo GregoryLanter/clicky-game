@@ -1,0 +1,29 @@
+/**{
+    border-radius: 5px;
+    border: 1px solid blue
+}*/
+header{
+  position: relative;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  background: #c3cbd6;
+  margin: 0px;
+  padding: 0px;
+}
+h1{
+  display: inline-block;
+  width:30%;  
+}
+p{
+  margin-left: 3%;
+  display: inline-block;
+  width:30%;  
+}
+#score{
+  float: right;
+}
+#response{
+  width: 512px;
+  text-align: center;
+}
