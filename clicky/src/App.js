@@ -54,10 +54,19 @@
   
           this.setState({ score: this.state.score + 1 }, () => {
             if (this.state.score >= this.state.topScore) {
-              this.setState({ topScore: this.state.score });
+              this.setState({ topScore: this.state.score }, () => {
+                if(this.state.score === 12){
+                  console.log("Winner");
+                  this.setState({response: "YOU WIN!!!"}, () => {
+                    this.setState({play: "Over"});
+                  });
+                }
+              });
             }
             this.setState({ response: "CORRECT!!! Keep guessing" });
           });
+
+
           //randomize
           let newDisplay = [];
           let used = [];

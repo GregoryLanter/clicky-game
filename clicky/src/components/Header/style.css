@@ -1,7 +1,7 @@
-*{
+/**{
     border-radius: 5px;
     border: 1px solid blue
-}
+}*/
 header{
   position: relative;
   top: 0px;
@@ -25,4 +25,5 @@ p{
 }
 #response{
   width: 512px;
+  text-align: center;
 }
