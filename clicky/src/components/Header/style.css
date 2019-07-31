@@ -1,7 +1,7 @@
-/**{
+*{
     border-radius: 5px;
     border: 1px solid blue
-}*/
+}
 header{
   position: relative;
   top: 0px;
@@ -19,4 +19,10 @@ p{
   margin-left: 3%;
   display: inline-block;
   width:30%;  
+}
+#score{
+  float: right;
+}
+#response{
+  width: 512px;
 }

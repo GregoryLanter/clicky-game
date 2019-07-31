@@ -7,61 +7,63 @@ import Wrapper from "./components/Wrapper";
 import krustyPals from "./krustyPals.json"
 
 class App extends Component {
-  
+
   state = this.initialState;
-  get initialState(){
+  get initialState() {
     return {
       response: "Click an image below to begin!",
       score: 0,
       topScore: 0,
       image: "",
       krustyPals: krustyPals,
-      trackTop: false,
+      clicked: ["Not Clicked","Not Clicked","Not Clicked","Not Clicked","Not Clicked","Not Clicked","Not Clicked","Not Clicked","Not Clicked","Not Clicked","Not Clicked"],
       play: "Playing"
-      }
+    }
   }
 
-    resetBuilder(){
-      let tempTopScore = this.state.topScore;
-      this.setState(this.initialState);
-      this.setState({topScore: tempTopScore});
-    }
+  resetBuilder() {
+    let tempTopScore = this.state.topScore;
+    this.setState(this.initialState);
+    this.setState({ topScore: tempTopScore });
+  }
 
 
   setScore = (clicked) => {
 
     if (this.state.play !== "Playing") {
-      this.resetBuilder();      
-    }
-
-    if (krustyPals[clicked - 1].clicked === "clicked") {
-      this.setState({ response: "Sorry No, Gave Over!" })
-      this.setState({ play: "Over" })
+      this.resetBuilder();
     } else {
-      krustyPals[clicked - 1].clicked = "clicked"
-      this.setState({ score: this.state.score + 1 }, () => {
-        if (this.state.score >= this.state.topScore) {
-          this.setState({ topScore: this.state.score });
+
+      if (this.state.clicked[clicked - 1] === "clicked") {
+        this.setState({ response: "Sorry No, Gave Over!" })
+        this.setState({ play: "Over" })
+      } else {
+        let clickedArr = this.state.clicked;
+        clickedArr[clicked - 1] = "clicked"
+        this.setState()
+        this.setState({ score: this.state.score + 1 }, () => {
+          if (this.state.score >= this.state.topScore) {
+            this.setState({ topScore: this.state.score });
+          }
+          this.setState({ response: "CORRECT!!! Keep guessing" }, {clicked: clickedArr})
+        });
+        //randomize
+        let newKrustyPals = [];
+        let used = [];
+        let newPosi = -1;
+        while (used.length < this.state.krustyPals.length) {
+          newPosi = Math.floor(Math.random() * 11);
+          while (used.indexOf(newPosi) !== -1) {
+            newPosi++;
+            if (newPosi > 11) newPosi = 0;
+          }
+          newKrustyPals.push(this.state.krustyPals[newPosi]);
+          used.push(newPosi);
         }
-        this.setState({ response: "CORRECT!!! Keep guessing" })
-      });
-      //randomize
-      let newKrustyPals = [];
-      let used = [];
-      let newPosi = -1;
-      while (used.length < this.state.krustyPals.length) {
-        newPosi = Math.floor(Math.random() * 11);
-        while (used.indexOf(newPosi) !== -1) {
-          newPosi++;
-          if (newPosi > 11) newPosi = 0;
-        }
-        newKrustyPals.push(this.state.krustyPals[newPosi]);
-        used.push(newPosi);
+        this.setState({ krustyPals: newKrustyPals });
       }
-      this.setState({ krustyPals: newKrustyPals });
     }
   }
-
 
   render() {
     return (
